@@ -11,7 +11,7 @@ class AbArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) : View
+    public function index(Request $request):View
     {
         $search = $request->string('search')->trim()->value();
         $articles = AbArticle::with('abuser')

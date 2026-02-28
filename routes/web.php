@@ -12,7 +12,7 @@ Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'islogged
 
 Route::get('/articles',[AbArticleController::class, 'index']);
 Route::post('/articles', [App\Http\Controllers\NewArticleController::class, 'store']);
-Route::get('/newarticle', function (){ return view('newArticle');});
+Route::view('/newarticle', 'articles.create');
 
 Route::get('/api/articles',[App\Http\Controllers\api\ArticleApiController::class, 'searchArticle_api']);
 Route::post('/api/articles',[App\Http\Controllers\api\ArticleApiController::class, 'store_article']);
