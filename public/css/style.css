@@ -1,0 +1,29 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+    padding: 1rem;
+    background: #f8f8f8;
+}
+
+.menu-item {
+    position: relative;
+}
+
+/*.menu-item:hover .submenu {
+    display: block;
+}
+*/
+.submenu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0.5rem 0;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.submenu li {
+    padding: 0.5rem 1rem;
+}
