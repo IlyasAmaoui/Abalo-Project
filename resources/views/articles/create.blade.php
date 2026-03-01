@@ -18,7 +18,7 @@
 
         {{-- Form Card --}}
         <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <form action="" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
+            <form action="/newarticle" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
                 @csrf
 
                 {{-- Name --}}

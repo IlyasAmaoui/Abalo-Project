@@ -11,8 +11,12 @@ Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->n
 Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'isloggedin'])->name('haslogin');
 
 Route::get('/articles',[AbArticleController::class, 'index']);
-Route::post('/articles', [App\Http\Controllers\NewArticleController::class, 'store']);
 Route::view('/newarticle', 'articles.create');
+Route::post('/articles',[AbArticleController::class, 'store']);
+
+
+//Route::post('/articles', [App\Http\Controllers\NewArticleController::class, 'store']);
+
 
 Route::get('/api/articles',[App\Http\Controllers\api\ArticleApiController::class, 'searchArticle_api']);
 Route::post('/api/articles',[App\Http\Controllers\api\ArticleApiController::class, 'store_article']);
