@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAbarticleRequest;
 use App\Models\AbArticle;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class AbArticleController extends Controller
@@ -32,9 +35,9 @@ class AbArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAbarticleRequest $request):RedirectResponse
     {
-        //
+           return redirect('/');
     }
 
     /**

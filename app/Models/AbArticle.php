@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class AbArticle extends Model
 {
     protected $table = 'ab_article';
     public $timestamps = false;
-    protected $fillable = ['ab_name', 'ab_price', 'ab_description', 'ab_createdate'];
+    protected $fillable = ['ab_name', 'ab_price',
+                            'ab_description','image_path',
+                            'ab_createdate'];
     public function abuser(): BelongsTo
     {
         return $this->belongsTo(AbUser::Class, 'ab_creator_id');
@@ -20,15 +24,24 @@ class AbArticle extends Model
     //get  ImageUrl  Attribute
     // ↑      ↑         ↑
     //prefix  name    suffix
-    protected function getImageUrlAttribute(): ?string
+    protected function imageUrl(): Attribute
     {
-        foreach (['jpg', 'png'] as $ext) {
-            if (file_exists(public_path("articleImages/{$this->id}.{$ext}"))) {
-                return asset("articleImages/{$this->id}.{$ext}");
-            }
-        }
+        return Attribute::make(
+            get: function (): ?string {
+                // New uploads → use Storage
+                if ($this->image_path) {
+                    return Storage::url($this->image_path);
+                }
 
-        return null;
+                // Legacy images → your current public/articleImages/{id}.jpg
+                $legacyPath = public_path("articleImages/{$this->id}.jpg");
+                if (file_exists($legacyPath)) {
+                    return asset("articleImages/{$this->id}.jpg");
+                }
+
+                return null;
+            }
+        );
     }
 
 }

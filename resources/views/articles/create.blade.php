@@ -18,7 +18,7 @@
 
         {{-- Form Card --}}
         <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <form action="/newarticle" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
+            <form action="/articles" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6">
                 @csrf
 
                 {{-- Name --}}
@@ -33,6 +33,7 @@
                         value="{{ old('name') }}"
                         placeholder="e.g. Vintage Leather Jacket"
                         class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition @error('name') border-red-400 bg-red-50 @enderror"
+
                     >
                     @error('name')
                     <p class="text-xs text-red-500 flex items-center gap-1">
@@ -54,6 +55,7 @@
                         name="description"
                         rows="4"
                         placeholder="Describe your article — condition, size, details..."
+                        maxlength="255"
                         class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none @error('description') border-red-400 bg-red-50 @enderror"
                     >{{ old('description') }}</textarea>
                     @error('description')
@@ -113,7 +115,7 @@
                             type="file"
                             id="image"
                             name="image"
-                            accept="image/jpeg,image/png"
+                            accept="image/jpeg,image/png,image/jpg"
                             class="hidden"
                         >
                     </label>
@@ -133,7 +135,7 @@
 
                 {{-- Actions --}}
                 <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <a href="" class="text-sm text-gray-500 hover:text-gray-700 transition">
+                    <a href="/articles" class="text-sm text-gray-500 hover:text-gray-700 transition">
                         Cancel
                     </a>
                     <button

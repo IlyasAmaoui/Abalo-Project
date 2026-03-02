@@ -31,6 +31,6 @@ class AbUser extends Model
     }
     public function articles(): HasMany
     {
-        return $this->hasMany(Ab_Article::class);
+        return $this->hasMany(AbArticle::class);
     }
 }
