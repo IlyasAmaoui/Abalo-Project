@@ -5,7 +5,7 @@
 
      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         @forelse($articles as $article)
-            <x-article :article="$article" />
+            <a class="card-link " href="{{route('abArticles.show',$article)}}"><x-article :article="$article" /></a>
         @empty
             <div class="hero py-12">
                 <div class="hero-content text-center">
@@ -19,7 +19,7 @@
             </div>
         @endforelse
     </div>
-    <div class="">
+    <div class="mx-auto">
         {{ $articles->appends(request()->query())->links() }}
     </div>
 

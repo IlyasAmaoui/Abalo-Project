@@ -6,8 +6,9 @@ use Database\Factories\AbUserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class AbUser extends Model
+class AbUser extends Authenticatable
 {
     /** @use HasFactory<AbUserFactory> */
     use HasFactory;
@@ -21,16 +22,16 @@ class AbUser extends Model
         'ab_mail'
     ];
     protected $hidden=[
-        'password'
+        'ab_password'
     ];
     protected function casts(): array
     {
         return [
-            'password' => 'hashed',
+            'ab_password' => 'hashed',
         ];
     }
     public function articles(): HasMany
     {
-        return $this->hasMany(AbArticle::class);
+        return $this->hasMany(AbArticle::class,'ab_creator_id','id');
     }
 }

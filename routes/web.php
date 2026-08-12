@@ -1,18 +1,45 @@
 <?php
 
 use App\Http\Controllers\AbArticleController;
+use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\Auth\Register;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {return view('welcome');});
+//Route::get('/', function () {return view('welcome');});
 
 
-Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
-Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
-Route::get('/isloggedin', [App\Http\Controllers\AuthController::class, 'isloggedin'])->name('haslogin');
 
-Route::get('/articles',[AbArticleController::class, 'index']);
-Route::view('/newarticle', 'articles.create');
-Route::post('/articles',[AbArticleController::class, 'store']);
+Route::get('/',[AbArticleController::class, 'index'])->name('home'); // show all articles
+Route::get('/articles/{abarticle}',[AbArticleController::class, 'show'])->name('abArticles.show');// show the detailed form
+
+Route::middleware('auth')->group(function () {
+    Route::view('/newarticle', 'articles.create');
+    Route::post('/articles', [AbArticleController::class, 'store']);
+    Route::get('/articles/{abarticle}/edit', [AbArticleController::class, 'edit'])->name('abArticles.edit');
+    Route::put('/articles/{abarticle}', [AbArticleController::class, 'update'])->name('abArticles.update');
+    Route::delete('/articles/{abarticle}', [AbArticleController::class, 'destroy'])->name('abArticles.destroy');
+});
+
+// Register Routes
+Route::view('/register', 'auth.register');
+Route::post('/register',Register::class);
+
+// Login routes
+Route::view('/login', 'auth.login')->name('login');;
+Route::post('/login', Login::class);
+
+
+//Logout
+Route::post('/logout',Logout::class);
+
+
+
+
+
+
+
+
 
 
 //Route::post('/articles', [App\Http\Controllers\NewArticleController::class, 'store']);
@@ -26,7 +53,7 @@ Route::post('/api/articles',[App\Http\Controllers\api\ArticleApiController::clas
 
 Route::post('/api/shoppingcart', [App\Http\Controllers\api\ShoppingCartController::class, 'store_api']);
 Route::get('/api/shoppingcarte', [App\Http\Controllers\api\ShoppingCartController::class, 'getUserCart_api']);
-Route::delete('/api/shoppingcart/{shoppingcartid}/articles/{articleId}', [App\Http\Controllers\api\ShoppingCartController::class, 'destroy']);
+Route::delete('/api/shoppingcart/{shoppingcartid}/articles/{abarticle}', [App\Http\Controllers\api\ShoppingCartController::class, 'destroy'])->name('cart.store',);
 
 ## hada jdide
 Route::get('/newsite' , function(){ return view('newsite'); });

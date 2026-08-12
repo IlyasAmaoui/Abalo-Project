@@ -22,24 +22,24 @@ class StoreAbarticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:1000'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'ab_name' => ['required', 'string', 'max:255'],
+            'ab_description' => ['required', 'string', 'max:1000'],
+            'ab_price' => ['required', 'numeric', 'min:0'],
+            'image_path' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
         ];
     }
     public function messages(): array
     {
         return [
-            'name.required'        => 'Please write a name for your article.',
-            'name.max'             => 'Name must be 255 characters or less.',
-            'description.required' => 'Please add a description.',
-            'price.required'       => 'Please set a price.',
-            'price.numeric'        => 'Price must be a number.',
-            'price.min'            => 'Price cannot be negative.',
-            'image.required'       => 'Please upload an image.',
-            'image.mimes'          => 'Image must be a JPEG or PNG file.',
-            'image.max'            => 'Image must be smaller than 2MB.',
+            'ab_name.required'        => 'Please write a name for your article.',
+            'ab_name.max'             => 'Name must be 255 characters or less.',
+            'ab_description.required' => 'Please add a description.',
+            'ab_price.required'       => 'Please set a price.',
+            'ab_price.numeric'        => 'Price must be a number.',
+            'ab_price.min'            => 'Price cannot be negative.',
+            'image_path.required'       => 'Please upload an image.',
+            'image_path.mimes'          => 'Image must be a JPEG or PNG file.',
+            'image_path.max'            => 'Image must be smaller than 2MB.',
         ];
     }
 }

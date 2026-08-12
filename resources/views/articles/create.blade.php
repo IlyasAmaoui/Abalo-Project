@@ -23,19 +23,19 @@
 
                 {{-- Name --}}
                 <div class="flex flex-col gap-1.5">
-                    <label for="name" class="text-sm font-medium text-gray-700">
+                    <label for="ab_name" class="text-sm font-medium text-gray-700">
                         Article Name <span class="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value="{{ old('name') }}"
+                        id="ab_name"
+                        name="ab_name"
+                        value="{{ old('ab_name') }}"
                         placeholder="e.g. Vintage Leather Jacket"
                         class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition @error('name') border-red-400 bg-red-50 @enderror"
 
                     >
-                    @error('name')
+                    @error('ab_name')
                     <p class="text-xs text-red-500 flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -47,18 +47,18 @@
 
                 {{-- Description --}}
                 <div class="flex flex-col gap-1.5">
-                    <label for="description" class="text-sm font-medium text-gray-700">
+                    <label for="ab_description" class="text-sm font-medium text-gray-700">
                         Description <span class="text-red-500">*</span>
                     </label>
                     <textarea
-                        id="description"
-                        name="description"
+                        id="ab_description"
+                        name="ab_description"
                         rows="4"
                         placeholder="Describe your article — condition, size, details..."
                         maxlength="255"
                         class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition resize-none @error('description') border-red-400 bg-red-50 @enderror"
-                    >{{ old('description') }}</textarea>
-                    @error('description')
+                    >{{ old('ab_description') }}</textarea>
+                    @error('ab_description')
                     <p class="text-xs text-red-500 flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -70,23 +70,23 @@
 
                 {{-- Price --}}
                 <div class="flex flex-col gap-1.5">
-                    <label for="price" class="text-sm font-medium text-gray-700">
+                    <label for="ab_price" class="text-sm font-medium text-gray-700">
                         Price (€) <span class="text-red-500">*</span>
                     </label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">€</span>
                         <input
                             type="number"
-                            id="price"
-                            name="price"
-                            value="{{ old('price') }}"
+                            id="ab_price"
+                            name="ab_price"
+                            value="{{ old('ab_price') }}"
                             placeholder="0.00"
                             min="0"
                             step="0.01"
                             class="w-full rounded-xl border border-gray-200 pl-8 pr-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition @error('price') border-red-400 bg-red-50 @enderror"
                         >
                     </div>
-                    @error('price')
+                    @error('ab_price')
                     <p class="text-xs text-red-500 flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -100,7 +100,7 @@
                 <div class="flex flex-col gap-1.5">
                     <label class="text-sm font-medium text-gray-700">Image</label>
                     <label
-                        for="image"
+                        for="image_path"
                         class="group relative flex flex-col items-center justify-center gap-3 w-full h-40 rounded-xl border-2 border-dashed border-gray-200 hover:border-indigo-400 hover:bg-indigo-50/50 transition cursor-pointer @error('image') border-red-400 bg-red-50 @enderror"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-300 group-hover:text-indigo-400 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,8 +113,8 @@
                         </div>
                         <input
                             type="file"
-                            id="image"
-                            name="image"
+                            id="image_path"
+                            name="image_path"
                             accept="image/jpeg,image/png,image/jpg"
                             class="hidden"
                         >
@@ -123,7 +123,7 @@
                     <div id="image-preview" class="hidden mt-2">
                         <img id="preview-img" src="" alt="Preview" class="w-full h-48 object-contain rounded-xl border border-gray-100 bg-gray-50 p-2">
                     </div>
-                    @error('image')
+                    @error('image_path')
                     <p class="text-xs text-red-500 flex items-center gap-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -140,8 +140,7 @@
                     </a>
                     <button
                         type="submit"
-                        class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
-                    >
+                        class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all duration-150 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -155,7 +154,7 @@
 
     {{-- Image Preview Script --}}
     <script>
-        document.getElementById('image').addEventListener('change', function (e) {
+        document.getElementById('image_path').addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (!file) { return; }
 

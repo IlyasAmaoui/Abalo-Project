@@ -12,11 +12,18 @@ class AbArticle extends Model
     protected $table = 'ab_article';
     public $timestamps = false;
     protected $fillable = ['ab_name', 'ab_price',
-                            'ab_description','image_path',
+                            'ab_description','image_path','ab_creator_id',
                             'ab_createdate'];
     public function abuser(): BelongsTo
     {
         return $this->belongsTo(AbUser::Class, 'ab_creator_id');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'ab_createdate' => 'datetime',
+        ];
     }
 
     // The naming convention is the magic here:

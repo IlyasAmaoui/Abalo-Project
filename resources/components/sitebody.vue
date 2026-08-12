@@ -78,17 +78,8 @@
             <p class="article-card__desc">{{ article.ab_description }}</p>
             <h6 class="article-card__price">{{ article.ab_price }} €</h6>
             <button class="article-card__btn" @click="cartload(article.id)">add 🛒</button>
-            <button v-if="currentUserId==article.ab_creator_id" class="article-card__btn article-card__btn--spaced" @click="offerArticle(article.id)">Artikel jetzt als Angebot anbieten</button>
+            <button v-if="currentUserId===article.ab_creator_id" class="article-card__btn article-card__btn--spaced" @click="offerArticle(article.id)">Artikel jetzt als Angebot anbieten</button>
 
-            <star-rating
-                class="article-card__rating"
-                :rating="ratings[article.id] || 0"
-                :max-rating="5"
-                :star-size="25"
-                :inactive-color="'#ccc'"
-                :active-color="'#ffd055'"
-                @rating-selected="val => saveRating(article.id, val)"
-            />
           </div>
         </div>
       </div>
@@ -104,14 +95,14 @@
 import Impressum from './impressum.vue';
 import axios from "axios";
 import 'bootstrap';
-import StarRating from "vue-star-rating";
+
 
 export default {
   name: 'SiteBody',
   props: ['view'],
   components: {
     Impressum,
-    StarRating
+
   },
   data() {
     return {

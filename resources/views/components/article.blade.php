@@ -44,15 +44,7 @@
             </div>
             <span class="text-xs text-gray-400 truncate">{{ $article->abuser->ab_name }}</span>
         </div>
-
-        {{-- CTA Button --}}
-        <button
-            onclick="cartload({{ $article->id }})"
-            class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-sm font-semibold py-2.5 rounded-xl transition-all duration-150 cursor-pointer"
-        >
-            <span>In den Warenkorb</span>
-            <span>🛒</span>
-        </button>
-
     </div>
+
+
 </div>
